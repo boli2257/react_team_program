@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../AddTask.css";
 
 const AddTask = ({ setTasks }) => {
   const [text, setText] = useState("");
@@ -23,20 +24,26 @@ const AddTask = ({ setTasks }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="addtask-form" onSubmit={handleSubmit}>
       <input
+        className="addtask-input"
         type="text"
-        placeholder="Feladat"
+        placeholder="Új feladat"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
+
       <input
+        className="addtask-input"
         type="text"
-        placeholder="Felelős"
+        placeholder="Felelős neve"
         value={assignedTo}
         onChange={(e) => setAssignedTo(e.target.value)}
       />
-      <button type="submit">Hozzáadás</button>
+
+      <button className="addtask-button" type="submit">
+        Hozzáadás
+      </button>
     </form>
   );
 };

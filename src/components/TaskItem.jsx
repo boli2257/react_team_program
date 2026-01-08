@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EditTask from "./EditTask";
+import "../TaskItem.css";
 
 const TaskItem = ({ task, setTasks }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -25,13 +26,31 @@ const TaskItem = ({ task, setTasks }) => {
   }
 
   return (
-    <li>
-      <input type="checkbox" checked={task.completed} onChange={toggleCompleted} />
-      <span style={{ textDecoration: task.completed ? "line-through" : "none" }}>
-        {task.text} <em>(Felelős: {task.assignedTo})</em>
+    <li className="taskitem">
+      <input
+        type="checkbox"
+        checked={task.completed}
+        onChange={toggleCompleted}
+      />
+
+      <span className={task.completed ? "task-text done" : "task-text"}>
+        {task.text}
+        <span className="task-owner"> (Felelős: {task.assignedTo})</span>
       </span>
-      <button className="szerk" onClick={() => setIsEditing(true)}>Szerkesztés</button>
-      <button className="torol" onClick={handleDelete}>Törlés</button>
+
+      <button
+        className="task-btn edit"
+        onClick={() => setIsEditing(true)}
+      >
+        Szerkesztés
+      </button>
+
+      <button
+        className="task-btn delete"
+        onClick={handleDelete}
+      >
+        Törlés
+      </button>
     </li>
   );
 };
