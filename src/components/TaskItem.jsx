@@ -30,8 +30,8 @@ const TaskItem = ({ task, setTasks }) => {
       <span style={{ textDecoration: task.completed ? "line-through" : "none" }}>
         {task.text} <em>(Felelős: {task.assignedTo})</em>
       </span>
-      <button onClick={() => setIsEditing(true)}>Szerkesztés</button>
-      <button onClick={handleDelete}>Törlés</button>
+      <button className="szerk" onClick={() => setIsEditing(true)}>Szerkesztés</button>
+      <button className="torol" onClick={handleDelete}>Törlés</button>
     </li>
   );
 };
