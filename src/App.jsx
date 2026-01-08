@@ -1,6 +1,6 @@
-import { useState } from "react"
-import TaskList from "./components/TaskList"
-import { AddTask } from "./components/AddTask"
+import { useState } from "react";
+import AddTask from "./components/AddTask";
+import TaskList from "./components/TaskList";
 
 const initialTasks = [
   { id: 1, text: "Első feladat", completed: false, assignedTo: "Anna" },

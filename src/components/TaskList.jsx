@@ -1,9 +1,14 @@
-import React from 'react'
+import React from "react";
+import TaskItem from "./TaskItem";
 
-export const TaskList = () => {
+const TaskList = ({ tasks, setTasks }) => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <ul>
+      {tasks.map((task) => (
+        <TaskItem key={task.id} task={task} setTasks={setTasks} />
+      ))}
+    </ul>
+  );
+};
+
+export default TaskList;
