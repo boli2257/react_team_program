@@ -1,15 +1,23 @@
-import './App.css'
-import { AddTask } from './components/AddTaSK.JSX'
+import { useState } from "react"
+import TaskList from "./components/TaskList"
+import { AddTask } from "./components/AddTask"
+
+const initialTasks = [
+  { id: 1, text: "Első feladat", completed: false, assignedTo: "Anna" },
+  { id: 2, text: "Második feladat", completed: true, assignedTo: "Béla" },
+  { id: 3, text: "Harmadik feladat", completed: false, assignedTo: "Csaba" },
+];
 
 function App() {
-
+  const [tasks, setTasks] = useState(initialTasks);
 
   return (
-    <>
-    Csapat projekt!
-    <AddTask/>
-    </>
-  )
+    <div>
+      <h1>Feladatlista</h1>
+      <AddTask setTasks={setTasks} />
+      <TaskList tasks={tasks} setTasks={setTasks} />
+    </div>
+  );
 }
 
-export default App
+export default App;
