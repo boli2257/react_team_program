@@ -1,46 +1,44 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export function AddTask({ onAdd }) {
-  const [title, setTitle] = useState("");
-  const [assignee, setAssignee] = useState("");
+const AddTask = ({ setTasks }) => {
+  const [text, setText] = useState("");
+  const [assignedTo, setAssignedTo] = useState("");
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
+    if (!text) return;
 
-    const t = title.trim();
-    const a = assignee.trim();
+    setTasks(prev => [
+      ...prev,
+      {
+        id: Date.now(),
+        text,
+        completed: false,
+        assignedTo,
+      },
+    ]);
 
-    if (!t || !a) return;
-
-    onAdd({
-      title: t,
-      assignee: a,
-      done: false,
-    });
-
-    setTitle("");
-    setAssignee("");
-  }
+    setText("");
+    setAssignedTo("");
+  };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", gap: 8 }}>
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Új feladat"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        style={{ flex: 1 }}
+        placeholder="Feladat"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
       />
-
       <input
         type="text"
-        placeholder="Fejlesztő neve"
-        value={assignee}
-        onChange={(e) => setAssignee(e.target.value)}
-        style={{ width: 160 }}
+        placeholder="Felelős"
+        value={assignedTo}
+        onChange={(e) => setAssignedTo(e.target.value)}
       />
-
       <button type="submit">Hozzáadás</button>
     </form>
   );
-}
+};
+
+export default AddTask;
