@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 const EditTask = ({ task, setTasks, setIsEditing }) => {
   const [text, setText] = useState(task.text);
   const [assignedTo, setAssignedTo] = useState(task.assignedTo);
