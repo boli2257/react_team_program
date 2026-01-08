@@ -1,9 +1,10 @@
 import React from "react";
 import TaskItem from "./TaskItem";
+import "../TaskList.css"
 
 const TaskList = ({ tasks, setTasks }) => {
   return (
-    <ul>
+    <ul className="tasklist">
       {tasks.map((task) => (
         <TaskItem key={task.id} task={task} setTasks={setTasks} />
       ))}
